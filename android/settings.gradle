@@ -1,0 +1,3 @@
+rootProject.name = 'multi_line_highlighter'
+
+include ':app'
