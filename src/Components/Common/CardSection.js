@@ -3,7 +3,11 @@ import { View } from 'react-native';
 
 const CardSection = (props) => {
 	return (
-		<View style={styles.containerStyle}>
+		<View 
+			style={
+				[styles.containerStyle,
+				{ borderBottomWidth: props.borderBottomWidth || styles.containerStyle.borderBottomWidth }]}
+		>
 			{props.children}
 		</View>
 	);

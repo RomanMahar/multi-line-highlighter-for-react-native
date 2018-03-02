@@ -30,7 +30,7 @@ class HighlightContent extends Component {
 					style={{ height: 800 }}
 					source={AT_BG}
 				>
-					<View style={{ paddingLeft: 30, top: 60 }}>
+					<View style={{ paddingLeft: 30, paddingRight: 30, top: 60 }}>
 						<MultiLine
 							fontFamily={'Roboto'}
 							splitOn={18}
@@ -38,6 +38,7 @@ class HighlightContent extends Component {
 							marginTop={12}
 							shadow
 							aubergine
+							textAlign={'left'}
 						>
 							{/*backgroundColor={'#ef4136'}*/}
 							{AdvText}
@@ -87,13 +88,27 @@ class HighlightContent extends Component {
 									label="PASSWORD"
 								/>
 							</CardSection>
-							<CardSection>
+							<CardSection borderBottomWidth={-1}>
 								<Button>
 									LOG IN
 								</Button>
 							</CardSection>
 						</Card>
+						<View style={{ paddingLeft: 30, paddingRight: 30, marginTop: 8 }}>
+							<MultiLine
+								fontFamily={'Roboto'}
+								splitOn={48}
+								fontSize={14}
+								marginTop={2}
+								textAlign={'left'}
+								shadow
+								honeybee
+							>
+								Photo credit: Bryan Minear
+							</MultiLine>
+						</View>
 					</View>
+
 				</ImageBackground>
 			</View>
 		);

@@ -7,7 +7,6 @@ class MultiLine extends Component {
 		let textString = this.props.children;
 		// splitOn is integer value. Input expected char count max per line as prop
 		const splitOn = this.props.splitOn;
-		// Adds space to end of string, preventing cutoff of last word
 		const spaceMultiplier = this.props.linePadding;
 		let singleSpace = ' ';
 		if (spaceMultiplier && spaceMultiplier != 0) {
@@ -18,7 +17,15 @@ class MultiLine extends Component {
 		} else if (spaceMultiplier === 0) {
 			singleSpace = '';
 		}
-		textString = textString.concat(singleSpace);
+		let rightBorderWidth = 0;
+		if (this.props.textAlign === 'right') {
+			rightBorderWidth = Math.ceil(this.props.fontSize * 0.25);
+			if (spaceMultiplier && spaceMultiplier != 0) {
+				rightBorderWidth *= spaceMultiplier;
+			}
+		}
+		// Adds space to end of string, preventing cutoff of last word.
+		textString = textString.concat(' ');
 		const numOfLines = Math.ceil(textString.length / splitOn);
 		let lineStart = 0;
 		let lineEnd = textString.slice(0, splitOn).lastIndexOf(' ');
@@ -40,6 +47,7 @@ class MultiLine extends Component {
 		const aubergine = this.props.aubergine;
 		const iceBlue = this.props.iceBlue;
 		const salmon = this.props.salmon;
+		const honeybee = this.props.honeybee;
 		let colorProfile = {};
 		if (aubergine) { 
 			colorProfile = { color: '#f9f9ff', backgroundColor: '#4F0A72' };
@@ -47,26 +55,30 @@ class MultiLine extends Component {
 			colorProfile = { color: '#111133', backgroundColor: '#c0c0f4' };
 		} else if (salmon) { 
 			colorProfile = { color: '#fffafa', backgroundColor: '#ef3130' };
+		} else if (honeybee) { 
+			colorProfile = { color: '#442232', backgroundColor: '#ffdd10' };
 		}
 		const shadow = this.props.shadow;
 		let defaultShadow = {};
 		if (shadow) {
 			defaultShadow = {
 				shadowColor: '#000',
-				shadowOffset: { width: 1, height: 2},
+				shadowOffset: { width: 1, height: 2 },
 				shadowOpacity: 0.5
 			};
 		}
-		return this.lines.map((line, i) => 
+		return this.lines.map(line => 
 			<View
 				style={{
+					borderRightWidth: rightBorderWidth,
+					borderRightColor: this.props.backgroundColor || colorProfile.backgroundColor,
 					marginTop: this.props.marginTop,
 					shadowColor: this.props.shadowColor || defaultShadow.shadowColor,
 					shadowOffset: this.props.shadowOffset || defaultShadow.shadowOffset,
 					shadowOpacity: this.props.shadowOpacity || defaultShadow.shadowOpacity
 			}}
 			>
-				<Text>
+				<Text style={{ textAlign: this.props.textAlign }}>
 					<Text
 						style={{
 							lineHeight: this.props.lineHeight,
@@ -75,7 +87,6 @@ class MultiLine extends Component {
 							fontWeight: 'bold',
 							color: this.props.color || colorProfile.color,
 							backgroundColor: this.props.backgroundColor || colorProfile.backgroundColor}} 
-						key={i.toString()}
 					>
 							{line}
 						</Text>
