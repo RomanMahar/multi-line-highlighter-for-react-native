@@ -20,20 +20,24 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
 
 const styles = {
 	labelStyle: {
-		fontSize: 18,
+		fontSize: 13,
+		fontWeight: '300',
 		paddingLeft: 8,
-		flex: 1
+		flex: 1,
+		fontFamily: 'Roboto'
 	},
 	textInputStyle: {
 		flex: 3,
 		color: '#000',
 		paddingLeft: 5,
 		paddingRight: 5,
-		fontSize: 18,
-		lineHeight: 23
+		fontSize: 13,
+		fontFamily: 'Roboto'
 	},
 	containerStyle: {
 		height: 40,
+		backgroundColor: '#fff',
+		borderRadius: 4,
 		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center'

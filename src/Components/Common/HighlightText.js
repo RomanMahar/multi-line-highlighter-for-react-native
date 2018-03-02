@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-class HighlightText extends Component {
+class MultiLine extends Component {
 	lines = [];
 	renderLines() {
 		let textString = this.props.children;
@@ -15,7 +15,7 @@ class HighlightText extends Component {
 			for (i = 0; i < spaceMultiplier; i++) {
 				singleSpace += ' ';
 			}
-		} else if (spaceMultiplier == 0) {
+		} else if (spaceMultiplier === 0) {
 			singleSpace = '';
 		}
 		textString = textString.concat(singleSpace);
@@ -37,24 +37,44 @@ class HighlightText extends Component {
 			fakeLineEnd = lineStart + splitOn;
 			lineEnd = textString.slice(0, fakeLineEnd).lastIndexOf(' ');
 		}
+		const aubergine = this.props.aubergine;
+		const iceBlue = this.props.iceBlue;
+		const salmon = this.props.salmon;
+		let colorProfile = {};
+		if (aubergine) { 
+			colorProfile = { color: '#f9f9ff', backgroundColor: '#4F0A72' };
+		} else if (iceBlue) { 
+			colorProfile = { color: '#111133', backgroundColor: '#c0c0f4' };
+		} else if (salmon) { 
+			colorProfile = { color: '#fffafa', backgroundColor: '#ef3130' };
+		}
+		const shadow = this.props.shadow;
+		let defaultShadow = {};
+		if (shadow) {
+			defaultShadow = {
+				shadowColor: '#000',
+				shadowOffset: { width: 1, height: 2},
+				shadowOpacity: 0.5
+			};
+		}
 		return this.lines.map((line, i) => 
 			<View
 				style={{
 					marginTop: this.props.marginTop,
-					shadowColor: '#000',
-					shadowOffset: { width: 1, height: 2},
-					shadowOpacity: 0.5
+					shadowColor: this.props.shadowColor || defaultShadow.shadowColor,
+					shadowOffset: this.props.shadowOffset || defaultShadow.shadowOffset,
+					shadowOpacity: this.props.shadowOpacity || defaultShadow.shadowOpacity
 			}}
 			>
 				<Text>
 					<Text
-						selectable
-						selectionColor={'#ff0'}
 						style={{
+							lineHeight: this.props.lineHeight,
+							fontFamily: this.props.fontFamily,
 							fontSize: this.props.fontSize,
 							fontWeight: 'bold',
-							color: this.props.color,
-							backgroundColor: this.props.backgroundColor }} 
+							color: this.props.color || colorProfile.color,
+							backgroundColor: this.props.backgroundColor || colorProfile.backgroundColor}} 
 						key={i.toString()}
 					>
 							{line}
@@ -72,4 +92,4 @@ class HighlightText extends Component {
 	}
 }
 
-export { HighlightText };
+export { MultiLine };

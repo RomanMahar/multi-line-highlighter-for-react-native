@@ -19,19 +19,20 @@ const Button = ({ onPress, children }) => {
 const styles = {
 	buttonTextStyle: {
 		alignSelf: 'center',
-		color: '#007aff',
+		fontFamily: 'Roboto',
+		color: '#282828',
 		fontSize: 16,
-		fontWeight: '600',
+		fontWeight: '500',
 		paddingTop: 10,
 		paddingBottom: 10
 	},
 	buttonStyle: {
 		flex: 1,
 		alignSelf: 'stretch',
-		backgroundColor: '#fff',
+		backgroundColor: 'transparent',
 		borderRadius: 5,
 		borderWidth: 1,
-		borderColor: '#007aff',
+		borderColor: '#282828',
 		marginLeft: 5,
 		marginRight: 5
 	}

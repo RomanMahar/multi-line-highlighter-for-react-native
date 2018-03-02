@@ -9,14 +9,14 @@ const Card = (props) => {
 	);
 };
 
-const marginLR = 5;
+const marginLR = 30;
 
 const styles = {
 	containerStyle: {
-		backgroundColor: '#fff',
+		backgroundColor: 'rgba(255, 255, 255, 0.95)',
 		borderWidth: 1,
-		borderRadius: 2,
-		borderColor: '#ddd',
+		borderRadius: 4,
+		borderColor: 'rgba(255, 255, 255, 1)',
 		borderBottomWidth: 0,
 		shadowColor: '#000',
 		shadowOffset: { width: 0, height: 2 },
