@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, ImageBackground } from 'react-native';
+import { Text, View, Image, ImageBackground, Dimensions } from 'react-native';
 import { Button, Card, CardSection, Input, MultiLine, Spinner } from './Common';
 import { AT_LOGO_IMG, AT_BG } from '../../assets/images';
 
@@ -16,7 +16,7 @@ class HighlightContent extends Component {
 					*Not affiliated with Adventure
 					<Text style={{ textDecorationLine: 'underline' }}> Time-Travel </Text>
 					Group
-				</Text>
+				</Text>				
 				);
 			};
 		return (
@@ -30,9 +30,9 @@ class HighlightContent extends Component {
 							fontFamily={'Roboto'}
 							splitOn={18}
 							fontSize={38}
-							marginTop={8}
+							portProps={{ marginTop: 8 }}
 							shadow
-							aubergine
+							iceBlue
 							textAlign={'left'}
 						>
 							{/*backgroundColor={'#ef4136'}*/}
@@ -101,6 +101,7 @@ class HighlightContent extends Component {
 								splitOn={48}
 								fontSize={14}
 								marginTop={2}
+								portProps={{ backgroundColor: '#FF0' }}
 								textAlign={'right'}
 								shadow
 								honeybee

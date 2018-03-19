@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 
 class MultiLine extends Component {
 	lines = [];
 	renderLines() {
+		const isLandscape = () => {
+			const dim = Dimensions.get('screen');
+			return dim.height <= dim.width;
+		};
+		console.log(isLandscape());
 		let textString = this.props.children;
 		// splitOn is integer value. Input expected char count max per line as prop
 		const splitOn = this.props.splitOn;
 		const spaceMultiplier = this.props.linePadding;
 		let singleSpace = ' ';
-		if (spaceMultiplier && spaceMultiplier != 0) {
+		if (spaceMultiplier && spaceMultiplier !== 0) {
 			singleSpace = '';
 			for (i = 0; i < spaceMultiplier; i++) {
 				singleSpace += ' ';
@@ -20,7 +25,7 @@ class MultiLine extends Component {
 		let rightBorderWidth = 0;
 		if (this.props.textAlign === 'right') {
 			rightBorderWidth = Math.ceil(this.props.fontSize * 0.25);
-			if (spaceMultiplier && spaceMultiplier != 0) {
+			if (spaceMultiplier && spaceMultiplier !== 0) {
 				rightBorderWidth *= spaceMultiplier;
 			}
 		}
@@ -30,6 +35,7 @@ class MultiLine extends Component {
 		let lineStart = 0;
 		let lineEnd = textString.slice(0, splitOn).lastIndexOf(' ');
 		let fakeLineEnd = lineStart + splitOn;
+		
 		/* multiplying x2 to handle for awkward splits before very long words
 		 that can push content beyond the above calculated numOfLines */
 		for (i = 0; i < numOfLines * 2; i++) {
@@ -44,6 +50,7 @@ class MultiLine extends Component {
 			fakeLineEnd = lineStart + splitOn;
 			lineEnd = textString.slice(0, fakeLineEnd).lastIndexOf(' ');
 		}
+		// Some themed color sets
 		const aubergine = this.props.aubergine;
 		const iceBlue = this.props.iceBlue;
 		const salmon = this.props.salmon;
@@ -67,16 +74,19 @@ class MultiLine extends Component {
 				shadowOpacity: 0.5
 			};
 		}
+		let multiLineStyles = {};
+		if (!isLandscape()) {
+			multiLineStyles = this.props.portProps;
+		}
 		return this.lines.map(line => 
 			<View
-				style={{
+				style={[ multiLineStyles, {
 					borderRightWidth: rightBorderWidth,
 					borderRightColor: this.props.backgroundColor || colorProfile.backgroundColor,
-					marginTop: this.props.marginTop,
 					shadowColor: this.props.shadowColor || defaultShadow.shadowColor,
 					shadowOffset: this.props.shadowOffset || defaultShadow.shadowOffset,
 					shadowOpacity: this.props.shadowOpacity || defaultShadow.shadowOpacity
-			}}
+			}]}
 			>
 				<Text style={{ textAlign: this.props.textAlign }}>
 					<Text
@@ -86,10 +96,10 @@ class MultiLine extends Component {
 							fontSize: this.props.fontSize,
 							fontWeight: 'bold',
 							color: this.props.color || colorProfile.color,
-							backgroundColor: this.props.backgroundColor || colorProfile.backgroundColor}} 
+							backgroundColor: this.props.backgroundColor || colorProfile.backgroundColor }} 
 					>
-							{line}
-						</Text>
+						{line}
+					</Text>
 				</Text>
 			</View>
 		);
