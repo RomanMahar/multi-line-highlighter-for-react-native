@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "eslint": "^4.18.2",
     "react": "16.2.0",
     "react-native": "0.53.3"
   },
@@ -24,5 +25,18 @@
     "assets": [
       "./assets/fonts/"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RomanMahar/multi-line-highlighter-for-react-native.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RomanMahar/multi-line-highlighter-for-react-native/issues"
+  },
+  "homepage": "https://github.com/RomanMahar/multi-line-highlighter-for-react-native#readme",
+  "description": ""
 }
