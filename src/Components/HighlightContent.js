@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, Image, ImageBackground, Dimensions } from 'react-native';
+import { Text, View, Image, ImageBackground } from 'react-native';
 import { Button, Card, CardSection, Input, MultiLine, Spinner } from './Common';
+import { MediaQuery } from "react-native-responsive-ui";
 import { AT_LOGO_IMG, AT_BG } from '../../assets/images';
 
 class HighlightContent extends Component {
@@ -26,18 +27,34 @@ class HighlightContent extends Component {
 					source={AT_BG}
 				>
 					<View style={{ paddingLeft: 30, paddingRight: 30, top: 60 }}>
-						<MultiLine
-							fontFamily={'Roboto'}
-							splitOn={18}
-							fontSize={38}
-							portProps={{ marginTop: 8 }}
-							shadow
-							iceBlue
-							textAlign={'left'}
-						>
-							{/*backgroundColor={'#ef4136'}*/}
-							{AdvText}
-						</MultiLine>
+						<MediaQuery orientation="portrait">
+							<MultiLine
+								fontFamily={'Roboto'}
+								splitOn={18}
+								fontSize={38}
+								marginTop={ 8 }
+								shadow
+								aubergine
+								textAlign={'left'}
+								>
+								{/*backgroundColor={'#ef4136'}*/}
+								{AdvText}
+							</MultiLine>
+						</MediaQuery>
+						<MediaQuery orientation="landscape">
+							<MultiLine
+								fontFamily={'Roboto'}
+								splitOn={32}
+								fontSize={38}
+								marginTop={ 8 }
+								shadow
+								salmon
+								textAlign={'left'}
+								>
+								{/*backgroundColor={'#ef4136'}*/}
+								{AdvText}
+							</MultiLine>
+						</MediaQuery>
 					</View>
 					<View style={{ bottom: -140 }}>
 						<Card>
@@ -101,7 +118,6 @@ class HighlightContent extends Component {
 								splitOn={48}
 								fontSize={14}
 								marginTop={2}
-								portProps={{ backgroundColor: '#FF0' }}
 								textAlign={'right'}
 								shadow
 								honeybee

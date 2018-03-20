@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Header, Button, Card, CardSection, Spinner } from './Components/Common';
+import { Header } from './Components/Common';
 import HighlightContent from './Components/HighlightContent';
 
 class App extends Component {
-
 	render() {
 		return (
 			<View>
