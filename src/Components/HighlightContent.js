@@ -17,7 +17,7 @@ class HighlightContent extends Component {
 					*Not affiliated with Adventure
 					<Text style={{ textDecorationLine: 'underline' }}> Time-Travel </Text>
 					Group
-				</Text>				
+				</Text>
 				);
 			};
 		return (
