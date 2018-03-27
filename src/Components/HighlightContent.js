@@ -27,34 +27,19 @@ class HighlightContent extends Component {
 					source={AT_BG}
 				>
 					<View style={{ paddingLeft: 30, paddingRight: 30, top: 60 }}>
-						<MediaQuery orientation="portrait">
-							<MultiLine
-								fontFamily={'Roboto'}
-								splitOn={18}
-								fontSize={38}
-								marginTop={ 8 }
-								shadow
-								aubergine
-								textAlign={'left'}
-								>
-								{/*backgroundColor={'#ef4136'}*/}
-								{AdvText}
-							</MultiLine>
-						</MediaQuery>
-						<MediaQuery orientation="landscape">
-							<MultiLine
-								fontFamily={'Roboto'}
-								splitOn={32}
-								fontSize={38}
-								marginTop={ 8 }
-								shadow
-								salmon
-								textAlign={'left'}
-								>
-								{/*backgroundColor={'#ef4136'}*/}
-								{AdvText}
-							</MultiLine>
-						</MediaQuery>
+						<MultiLine
+							fontFamily={'Roboto'}
+							splitOn={15}
+							fontSize={36}
+							marginTop={ 8 }
+							linePadding={1}
+							shadow
+							fontWeight={'bold'}
+							theme={'aubergine'}
+							textAlign={'left'}
+							>
+							{AdvText}
+						</MultiLine>
 					</View>
 					<View style={{ bottom: -140 }}>
 						<Card>
@@ -119,8 +104,8 @@ class HighlightContent extends Component {
 								fontSize={14}
 								marginTop={2}
 								textAlign={'right'}
+								theme={'honeycomb'}
 								shadow
-								honeybee
 							>
 								Photo credit: Bryan Minear
 							</MultiLine>
