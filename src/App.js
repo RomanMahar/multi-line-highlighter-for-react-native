@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Header } from './Components/Common';
-import HighlightContent from './Components/HighlightContent';
+import HighlightContent from './Examples/AdventureTime.js';
 
 class App extends Component {
 	render() {

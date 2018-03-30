@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Image, ImageBackground } from 'react-native';
-import { Button, Card, CardSection, Input, MultiLine, Spinner } from './Common';
+import { Button, Card, CardSection, Input, Spinner } from '../Components/Common';
+import { MultiLine } from '../lib';
 import { MediaQuery } from "react-native-responsive-ui";
 import { AT_LOGO_IMG, AT_BG } from '../../assets/images';
 

@@ -19,9 +19,7 @@ class MultiLine extends Component {
 	}
 	render() {
 		return (
-			<View>
-				{this.renderLines()}
-			</View>
+			<View>{this.renderLines()}</View>
 		);
 	}
 }
