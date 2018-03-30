@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import { Text, View, Image, ImageBackground } from 'react-native';
-import { Button, Card, CardSection, Input, MultiLine, Spinner } from './Common';
+import { Button, Card, CardSection, Input, Spinner } from '../Components/Common';
+import { MultiLine } from '../lib';
+import { MediaQuery } from "react-native-responsive-ui";
 import { AT_LOGO_IMG, AT_BG } from '../../assets/images';
 
 class HighlightContent extends Component {
-
 	render() {
 		const Text1 = 'This is a string of text is the Text1 variable.';
 		const Text2 = 'This is the Text2 var.';
 		const TextAll = Text1 + ' ' + Text2 + ' It is all concatinated in the TextAll var';
 		const AdvText = 'Prepare for the adventure of a lifetime.';
-		const AT = () => {
-			return (
-				'Adventure Time Travel Group'.toUpperCase()
-				); 
-		};
+		const AT = () => 'Adventure Time Travel Group'.toUpperCase();
 		const DiscText = () => {
 			return (
 				<Text>
@@ -30,16 +27,18 @@ class HighlightContent extends Component {
 					style={{ height: 800 }}
 					source={AT_BG}
 				>
-					<View style={{ paddingLeft: 30, top: 60 }}>
+					<View style={{ paddingLeft: 30, paddingRight: 30, top: 60 }}>
 						<MultiLine
 							fontFamily={'Roboto'}
-							splitOn={18}
-							fontSize={38}
-							marginTop={12}
+							splitOn={15}
+							fontSize={36}
+							marginTop={ 8 }
+							linePadding={1}
 							shadow
-							aubergine
-						>
-							{/*backgroundColor={'#ef4136'}*/}
+							fontWeight={'bold'}
+							theme={'aubergine'}
+							textAlign={'left'}
+							>
 							{AdvText}
 						</MultiLine>
 					</View>
@@ -65,12 +64,18 @@ class HighlightContent extends Component {
 									/>
 									<View>
 										<Text style={{ fontFamily: 'Roboto', fontWeight: '300' }}>
-											<AT/>
+											<AT />
 										</Text>
 									</View>
 									<View>
-										<Text style={{ fontStyle: 'italic', fontSize: 10, fontFamily: 'Roboto', fontWeight: '400' }}>
-											<DiscText/>
+										<Text 
+											style={{ 
+											fontStyle: 'italic', 
+											fontSize: 10, 
+											fontFamily: 'Roboto', 
+											fontWeight: '400' }}
+										>
+											<DiscText />
 										</Text>
 									</View>
 								</View>
@@ -87,25 +92,31 @@ class HighlightContent extends Component {
 									label="PASSWORD"
 								/>
 							</CardSection>
-							<CardSection>
+							<CardSection borderBottomWidth={-1}>
 								<Button>
 									LOG IN
 								</Button>
 							</CardSection>
 						</Card>
+						<View style={{ paddingLeft: 30, paddingRight: 30, marginTop: 8 }}>
+							<MultiLine
+								fontFamily={'Roboto'}
+								splitOn={48}
+								fontSize={14}
+								marginTop={2}
+								textAlign={'right'}
+								theme={'honeycomb'}
+								shadow
+							>
+								Photo credit: Bryan Minear
+							</MultiLine>
+						</View>
 					</View>
+
 				</ImageBackground>
 			</View>
 		);
 	}
 }
-
-const styles = {
-	errorMessageStyle: {
-		fontSize: 20,
-		alignSelf: 'center',
-		color: '#e73042'
-	}
-};
 
 export default HighlightContent;
